@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+ runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
+ const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String buttonName='Click';
   int currentIndex = 0;
+  bool _isClicked= false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,10 +30,10 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: currentIndex == 0 ? Container(
             width: double.infinity,
-            
+            height: double.infinity,
             color: Colors.green,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,       // vertical shift
+              mainAxisAlignment: MainAxisAlignment.center,       // vertical shift
               crossAxisAlignment: CrossAxisAlignment.center,     // horizantal shift
               children: [
                 ElevatedButton(
@@ -55,7 +56,14 @@ class _MyAppState extends State<MyApp> {
 
               ],
             ),
-          ) :const SizedBox(),
+          ) : GestureDetector(
+            onTap: () {
+              setState(() {
+                _isClicked = !_isClicked;
+              });
+            },
+            child: _isClicked ? Image.asset('images/FlutterImage.png') : Image.asset('images/imageDart.png')
+          ),
           ),
           
         bottomNavigationBar: BottomNavigationBar(items: const [
