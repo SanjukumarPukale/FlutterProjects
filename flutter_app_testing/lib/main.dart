@@ -29,16 +29,20 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: SizedBox(
             width: double.infinity,
-            child: Column(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,       // vertical shift
               crossAxisAlignment: CrossAxisAlignment.start,     // horizantal shift
               children: [
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                    primary: Colors.orange,
+                  ),
                   onPressed: () {
                     setState(() {
                       buttonName = 'Clicked';     // when clicked on the button the state will be change from click to clicked, to do this we have to use stateful widget, setState()
                     });}, 
-                    child: Text(buttonName)),
+                    child: Text(buttonName)), 
 
                     ElevatedButton(
                   onPressed: () {
