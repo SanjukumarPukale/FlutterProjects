@@ -27,11 +27,13 @@ class _MyAppState extends State<MyApp> {
         ),
 
         body: Center(
-          child: SizedBox(
+          child: currentIndex == 0 ? Container(
             width: double.infinity,
+            
+            color: Colors.green,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,       // vertical shift
-              crossAxisAlignment: CrossAxisAlignment.start,     // horizantal shift
+              mainAxisAlignment: MainAxisAlignment.start,       // vertical shift
+              crossAxisAlignment: CrossAxisAlignment.center,     // horizantal shift
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -53,7 +55,7 @@ class _MyAppState extends State<MyApp> {
 
               ],
             ),
-          ),
+          ) :const SizedBox(),
           ),
           
         bottomNavigationBar: BottomNavigationBar(items: const [
